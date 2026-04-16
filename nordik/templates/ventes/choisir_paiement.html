@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2 class="text-center mb-4">Choisissez un mode de paiement</h2>
+
+<div class="d-flex flex-column align-items-center">
+
+    <a href="{% url 'paiement_carte' %}" class="btn btn-primary btn-lg mb-3">
+        💳 Payer par carte bancaire
+    </a>
+
+    <a href="{% url 'paiement_virement' %}" class="btn btn-outline-info btn-lg">
+        🔁 Payer par virement bancaire
+    </a>
+
+</div>
+
+{% endblock %}

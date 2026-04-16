@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Facture #{{ facture.numero }}{% endblock %}
+
+{% block content %}
+
+<div class="container my-5">
+
+    <div class="text-center mb-4">
+        <img src="{% static 'images/logo_nordik.png' %}"
+             alt="Nordik Adventures"
+             class="facture-logo">
+
+        <h2 class="mt-3 fw-bold">
+            🧾 Facture #{{ facture.numero }}
+        </h2>
+    </div>
+
+    <div class="card shadow-lg p-4 facture-card">
+        
+        <h4 class="fw-bold mb-3">Informations de la facture</h4>
+
+        <p><strong>Date :</strong> {{ facture.date_facture }}</p>
+        <p><strong>Client :</strong> {{ facture.vente.client }}</p>
+
+        <hr>
+
+        <h4 class="fw-bold mt-4">Détails de la commande</h4>
+
+        <table class="table table-bordered align-middle text-center my-3">
+            <thead class="table-light">
+                <tr>
+                    <th>Produit</th>
+                    <th>Qté</th>
+                    <th>Prix</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for ligne in facture.vente.lignes.all %}
+                <tr>
+                    <td>{{ ligne.produit.nom_produit }}</td>
+                    <td>{{ ligne.quantite }}</td>
+                    <td>{{ ligne.prix_unitaire }} $</td>
+                    <td>{{ ligne.sous_total }} $</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <hr>
+
+        <p class="d-flex justify-content-between">
+            <span>Sous-total :</span>
+            <strong>{{ facture.montant_ht }} $</strong>
+        </p>
+
+        <p class="d-flex justify-content-between">
+            <span>TPS :</span>
+            <strong>{{ facture.tps }} $</strong>
+        </p>
+
+        <p class="d-flex justify-content-between">
+            <span>TVQ :</span>
+            <strong>{{ facture.tvq }} $</strong>
+        </p>
+
+        <h4 class="d-flex justify-content-between mt-4">
+            <span>Total :</span>
+            <span class="text-success fw-bold">{{ facture.montant_ttc }} $</span>
+        </h4>
+
+        <p class="mt-3"><strong>Statut du paiement :</strong> 
+            <span class="text-success">{{ facture.statut_paiement }}</span>
+        </p>
+
+        <hr>
+
+        <div class="text-center">
+            <a href="{% url 'facture_pdf' facture.id %}"
+               class="btn btn-outline-primary w-50">
+                📄 Télécharger la facture PDF
+            </a>
+
+            <a href="{% url 'voir_panier' %}?merci=1"
+             class="btn btn-primary w-50 mt-3">
+              Retour au panier
+           </a>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

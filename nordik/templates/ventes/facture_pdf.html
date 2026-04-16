@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+
+        .logo {
+            width: 140px;
+            margin-bottom: 10px;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #444; padding: 8px; text-align: center; }
+        th { background: #eee; }
+
+        h2 { text-align: center; }
+        .total { font-size: 22px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <img src="{{ logo_path }}" class="logo">
+
+    <h2>Facture #{{ facture.numero }}</h2>
+
+    <p><strong>Date :</strong> {{ facture.date_facture }}</p>
+    <p><strong>Client :</strong> {{ facture.vente.client }}</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Qté</th>
+                <th>Prix</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ligne in facture.vente.lignes.all %}
+            <tr>
+                <td>{{ ligne.produit.nom_produit }}</td>
+                <td>{{ ligne.quantite }}</td>
+                <td>{{ ligne.prix_unitaire }} $</td>
+                <td>{{ ligne.sous_total }} $</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <p><strong>Sous-total :</strong> {{ facture.montant_ht }} $</p>
+    <p><strong>TPS :</strong> {{ facture.tps }} $</p>
+    <p><strong>TVQ :</strong> {{ facture.tvq }} $</p>
+
+    <p class="total">Total : {{ facture.montant_ttc }} $</p>
+
+</body>
+</html>

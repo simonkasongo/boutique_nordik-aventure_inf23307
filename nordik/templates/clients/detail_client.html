@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block title %}Client — {{ client.prenom_client }} {{ client.nom_client }}{% endblock %}
+
+{% block content %}
+
+<nav aria-label="breadcrumb" class="mb-3">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{% url 'liste_clients' %}">Clients</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ client.prenom_client }} {{ client.nom_client }}</li>
+  </ol>
+</nav>
+
+<h2 class="mb-3"><i class="fa-solid fa-user me-2"></i>{{ client.prenom_client }} {{ client.nom_client }}</h2>
+
+<div class="row g-4">
+  <div class="col-lg-5">
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white">
+        <i class="fa-solid fa-id-card me-2"></i>Coordonnées
+      </div>
+      <div class="card-body">
+        <p><strong>Adresse :</strong> {{ client.adresse }}</p>
+        <p><strong>Courriel :</strong> {{ client.courriel }}</p>
+        <p><strong>Téléphone :</strong> {{ client.telephone }}</p>
+        <p><strong>Statut :</strong> {{ client.statut }}</p>
+      </div>
+    </div>
+
+    <div class="card shadow-sm mt-4">
+      <div class="card-header bg-secondary text-white">
+        <i class="fa-solid fa-plus me-2"></i>Ajouter une activité (CRM)
+      </div>
+      <div class="card-body">
+        <form method="post" action="">
+          {% csrf_token %}
+          <div class="mb-3">
+            <label class="form-label" for="type_activite">Type d’activité</label>
+            <input type="text" class="form-control" id="type_activite" name="type_activite"
+                   maxlength="50" placeholder="Ex. Appel, Courriel, Réclamation" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" id="description" name="description" rows="3" required
+                      placeholder="Résumé de l’échange ou de l’action"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">
+            <i class="fa-solid fa-floppy-disk me-2"></i>Enregistrer
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-7">
+    <div class="card shadow-sm">
+      <div class="card-header bg-dark text-white">
+        <i class="fa-solid fa-clock-rotate-left me-2"></i>Historique des activités
+      </div>
+      <div class="card-body p-0">
+        <ul class="list-group list-group-flush">
+          {% for a in activites %}
+          <li class="list-group-item">
+            <div class="d-flex justify-content-between flex-wrap gap-2">
+              <strong>{{ a.type_activite }}</strong>
+              <small class="text-muted">{{ a.date_activite|date:"d/m/Y H:i" }}</small>
+            </div>
+            {% if a.description %}
+            <p class="mb-0 mt-2 small">{{ a.description }}</p>
+            {% endif %}
+          </li>
+          {% empty %}
+          <li class="list-group-item text-muted text-center py-4">Aucune activité enregistrée.</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

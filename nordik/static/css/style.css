@@ -1,0 +1,431 @@
+/* ============================================================
+   NORDIK ADVENTURES • Thème Clair Premium • Style Global
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   PALETTE DE COULEURS ET VARIABLES GLOBALES
+   ------------------------------------------------------------ */
+:root {
+  --nordik-blue-dark: #003049;
+  --nordik-blue-light: #1b6fa8;
+  --nordik-green: #4caf50;
+  --nordik-orange: #ee9b00;
+  --nordik-bg: #f5f7fa;
+  --nordik-gray: #6c757d;
+  --nordik-white: #ffffff;
+
+  /* 🔥 Variables ajoutées (nouveau CSS) */
+  --nordik-primary: #1b6fa8;
+  --nordik-secondary: #0a9396;
+  --nordik-dark: #001219;
+}
+
+/* ------------------------------------------------------------
+   GLOBAL
+   ------------------------------------------------------------ */
+body {
+  background: var(--nordik-bg);
+  font-family: "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+  color: var(--nordik-blue-dark);
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ------------------------------------------------------------
+   NAVBAR
+   ------------------------------------------------------------ */
+.navbar {
+  background: linear-gradient(90deg, #00263d, #004e7c);
+  padding: 0.8rem 0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-brand {
+  font-size: 1.4rem;
+  color: var(--nordik-white) !important;
+}
+
+.nav-link {
+  color: #e6e9ef !important;
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.nav-link:hover {
+  color: var(--nordik-orange) !important;
+  transform: translateY(-1px);
+}
+
+/* Dropdown */
+.dropdown-menu {
+  border-radius: 12px;
+  padding: 0.8rem;
+}
+
+.dropdown-item:hover {
+  background: var(--nordik-blue-light);
+  color: #fff;
+}
+
+/* ------------------------------------------------------------
+   PAGE ACCUEIL
+   ------------------------------------------------------------ */
+.hero-section {
+  position: relative;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  border-radius: 15px;
+}
+.text-shadow {
+  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+}
+
+/* ------------------------------------------------------------
+   PRODUITS — LISTE / CATALOGUE
+   ------------------------------------------------------------ */
+.produits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.8rem;
+}
+
+.produit-card {
+  background: #fff;
+  padding-bottom: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  transition: 0.25s ease;
+}
+
+.produit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.produit-card-img {
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef2f6;
+}
+
+.produit-card-img img {
+  max-width: 100%;
+  max-height: 180px;
+  object-fit: contain;
+}
+
+/* ------------------------------------------------------------
+   PRODUIT — DÉTAIL
+   ------------------------------------------------------------ */
+.img-fluid {
+  max-height: 420px;
+  object-fit: contain;
+}
+
+/* ------------------------------------------------------------
+   PANIER
+   ------------------------------------------------------------ */
+.panier-table {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.panier-img-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #e9ecef;
+}
+
+.panier-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.resume-card {
+  background: #fff;
+  border: 1px solid #dce2e8;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+}
+
+.btn-nordik {
+  background: var(--nordik-blue-light);
+  color: #fff;
+  border-radius: 25px;
+  padding: 0.6rem 1rem;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.btn-nordik:hover {
+  background: var(--nordik-blue-dark);
+}
+
+/* ------------------------------------------------------------
+   LOGIN / REGISTER
+   ------------------------------------------------------------ */
+.card {
+  border-radius: 12px !important;
+  background: #fff !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* ------------------------------------------------------------
+   PAIEMENT
+   ------------------------------------------------------------ */
+.payment-box {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  max-width: 450px;
+  margin: auto;
+}
+
+/* ------------------------------------------------------------
+   FACTURE
+   ------------------------------------------------------------ */
+.facture-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Uniformisation des images - section Pourquoi choisir Nordik */
+.feature-img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.facture-logo {
+  width: 150px;
+  opacity: 0.95;
+}
+
+/* ------------------------------------------------------------
+   DASHBOARD — CARDS STATISTIQUES
+   ------------------------------------------------------------ */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+.card-dashboard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.4rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: 0.25s;
+}
+
+.card-dashboard:hover {
+  transform: translateY(-5px);
+}
+
+.card-db-blue {
+  border-left: 10px solid #0a9396;
+}
+.card-db-green {
+  border-left: 10px solid #2b9348;
+}
+.card-db-orange {
+  border-left: 10px solid #ee9b00;
+}
+.card-db-purple {
+  border-left: 10px solid #7209b7;
+}
+.card-db-red {
+  border-left: 10px solid #ae2012;
+}
+
+/* ------------------------------------------------------------
+   DASHBOARD — LISTES
+   ------------------------------------------------------------ */
+.dashboard-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+.vente-item,
+.activite-item,
+.avis-item {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.section-line-message {
+  font-size: 0.95rem;
+  color: #6c757d;
+  padding-left: 0.5rem;
+  border-left: 4px solid var(--nordik-primary);
+}
+
+/* ------------------------------------------------------------
+   CONFETTIS — ANCIEN PRÉSERVÉ
+   ------------------------------------------------------------ */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: hsl(var(--hue), 90%, 60%);
+  top: -10px;
+  animation: fall 3s linear infinite;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+  }
+}
+
+:root {
+  --hue: 20;
+}
+
+.confetti:nth-child(5n) {
+  background: #ff6b6b;
+}
+.confetti:nth-child(5n + 1) {
+  background: #ffd93d;
+}
+.confetti:nth-child(5n + 2) {
+  background: #6bcb77;
+}
+.confetti:nth-child(5n + 3) {
+  background: #4d96ff;
+}
+.confetti:nth-child(5n + 4) {
+  background: #8338ec;
+}
+
+/* ------------------------------------------------------------
+   TIMELINE • ACTIVITÉS CLIENTS
+   ------------------------------------------------------------ */
+.activity-timeline {
+  position: relative;
+  margin-left: 20px;
+  padding-left: 15px;
+  border-left: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+.activity-item {
+  margin-bottom: 1.2rem;
+  padding-left: 15px;
+  position: relative;
+}
+
+.activity-dot {
+  width: 14px;
+  height: 14px;
+  background: var(--nordik-blue-light);
+  border-radius: 50%;
+  position: absolute;
+  left: -24px;
+  top: 4px;
+  border: 2px solid white;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.activity-content {
+  background: #fff;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.activity-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--nordik-blue-dark);
+}
+.activity-desc {
+  font-size: 0.9rem;
+  margin: 3px 0;
+  color: #444;
+}
+.activity-date {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* ------------------------------------------------------------
+   FOOTER — VERSION MODERNE (NOUVEAUX STYLES AJOUTÉS)
+   ------------------------------------------------------------ */
+footer.footer-nordik {
+  background: linear-gradient(180deg, #1b1f29, #0f1218) !important;
+  padding: 2.5rem 0 !important;
+  margin-top: 3rem;
+  color: #ddd !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+footer.footer-nordik h5 {
+  color: #ffd166;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+footer.footer-nordik p,
+footer.footer-nordik li,
+footer.footer-nordik a {
+  color: #e5e7eb !important;
+  font-size: 0.9rem;
+}
+
+footer.footer-nordik a:hover {
+  text-decoration: underline;
+}
+
+footer.footer-nordik .social-icon {
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+footer.footer-nordik .social-icon:hover {
+  transform: translateY(-3px);
+  color: #ffd166 !important;
+}

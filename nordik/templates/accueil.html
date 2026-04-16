@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+
+<!-- HERO PRINCIPAL -->
+<div class="hero-section text-light d-flex align-items-center"
+     style="background: url({% static 'images/accueil/accueil_montagne.jpg' %}) center/cover; height: 70vh; border-radius: 15px; position: relative;">
+
+    <div class="hero-overlay"></div>
+
+    <div class="container position-relative text-center">
+        <h1 class="display-4 fw-bold text-shadow">Explorez. Respirez. Vivez l'aventure.</h1>
+        <p class="lead mt-3 text-shadow">Le meilleur équipement plein air pour vos randonnées, treks et expéditions.</p>
+
+        <a href="/produits/" class="btn btn-nordik btn-lg mt-4 px-4">
+            Voir le catalogue →
+        </a>
+    </div>
+</div>
+
+
+<!-- SECTION 3 BLOCS -->
+<div class="container my-5">
+
+    <h2 class="text-center fw-bold mb-4">Pourquoi choisir Nordik Adventures ?</h2>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <div class="feature-card p-3 shadow-sm rounded text-center">
+                <img src="{% static 'images/accueil/accueil_magasin.jpg' %}" class="card-img-top feature-img" />
+                <h4 class="fw-bold">Des experts pour vous conseiller</h4>
+                <p>Une équipe passionnée qui vous guide dans le choix du meilleur matériel.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card p-3 shadow-sm rounded text-center">
+                <img src="{% static 'images/accueil/accueil_carte.jpg' %}" class="card-img-top feature-img" />
+                <h4 class="fw-bold">Un équipement fiable</h4>
+                <p>Du matériel robuste, testé pour la randonnée, l’escalade et l'aventure extrême.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-card p-3 shadow-sm rounded text-center">
+                <img src="{% static 'images/accueil/accueil_couple.jpg' %}" class="card-img-top feature-img" />
+                <h4 class="fw-bold">Pour tous les aventuriers</h4>
+                <p>Du débutant au trekkeur confirmé, nous avons ce qu’il vous faut.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- BANNIÈRE APPEL À L'ACTION -->
+<div class="cta-banner text-center text-light py-5 mt-5"
+     style="background: linear-gradient(135deg, #003049, #005f73); border-radius: 12px;">
+
+    <h2 class="fw-bold mb-2">Préparez votre prochaine aventure !</h2>
+    <p class="mb-4">Découvrez notre sélection de produits indispensables pour explorer la nature.</p>
+
+    <a href="/produits/" class="btn btn-light btn-lg px-4 fw-bold">
+        Explorer les produits
+    </a>
+</div>
+
+{% endblock %}

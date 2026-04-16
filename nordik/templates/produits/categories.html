@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Catégories{% endblock %}
+
+{% block content %}
+
+<h1 class="mb-4 text-center">Catégories de produits</h1>
+
+<div class="row g-4">
+
+    <!-- 1. Accessoires & Cuisine -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="{% static 'images/categories/accessoires_cuisine.png' %}" class="card-img-top">
+            <div class="card-body text-center">
+                <h4 class="card-title">Accessoires & Cuisine</h4>
+                <a href="{% url 'produits_par_categorie' 'Accessoires & cuisine' %}" class="btn btn-primary mt-2">
+                    Consulter
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Électronique & Navigation -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="{% static 'images/categories/electronique_navigation.png' %}" class="card-img-top">
+            <div class="card-body text-center">
+                <h4 class="card-title">Électronique & Navigation</h4>
+                <a href="{% url 'produits_par_categorie' 'Électronique & navigation' %}" class="btn btn-primary mt-2">
+                    Consulter
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Sacs & Portage -->
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <img src="{% static 'images/categories/sacs_portage.png' %}" class="card-img-top">
+            <div class="card-body text-center">
+                <h4 class="card-title">Sacs & Portage</h4>
+                <a href="{% url 'produits_par_categorie' 'Sacs & portage' %}" class="btn btn-primary mt-2">
+                    Consulter
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Tentes & abris -->
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <img src="{% static 'images/categories/tentes_abris.png' %}" class="card-img-top">
+            <div class="card-body text-center">
+                <h4 class="card-title">Tentes & Abris</h4>
+                <a href="{% url 'produits_par_categorie' 'Tentes & abris' %}" class="btn btn-primary mt-2">
+                    Consulter
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Vêtements techniques -->
+    <div class="col-md-6">
+        <div class="card shadow-sm">
+            <img src="{% static 'images/categories/vetements_techniques.png' %}" class="card-img-top">
+            <div class="card-body text-center">
+                <h4 class="card-title">Vêtements techniques</h4>
+                <a href="{% url 'produits_par_categorie' 'Vêtements techniques' %}" class="btn btn-primary mt-2">
+                    Consulter
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

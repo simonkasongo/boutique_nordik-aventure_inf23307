@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Catalogue{% endblock %}
+
+{% block content %}
+
+<div class="catalogue-header">
+    <div>
+        <h1>Catalogue des produits</h1>
+        <p class="text-muted mb-0">Équipement plein air – Nordik Adventures</p>
+    </div>
+</div>
+
+<div class="produits-grid">
+    {% for p in produits %}
+    <div class="produit-card">
+
+        <div class="produit-card-img">
+            <img src="{% static 'images/produits/' %}{{ p.image }}" alt="{{ p.nom_produit }}">
+        </div>
+
+        <div class="produit-card-body">
+            <div class="produit-card-title">{{ p.nom_produit }}</div>
+            <div class="produit-card-price">{{ p.prix_unitaire }} $</div>
+
+            {% if p.quantite_stock <= p.seuil_reappro %}
+                <span class="badge bg-danger badge-stock-faible">Stock faible</span>
+            {% else %}
+                <span class="badge bg-success badge-stock-faible">En stock</span>
+            {% endif %}
+        </div>
+
+        <div class="produit-card-footer">
+            <a href="{% url 'detail_produit' p.pk %}" class="btn btn-sm btn-outline-primary w-100">
+                Voir plus
+            </a>
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

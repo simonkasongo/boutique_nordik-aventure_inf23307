@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %}Mon compte{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">👤 Mon compte</h2>
+
+<div class="card p-4 shadow-lg" style="max-width: 600px; margin: auto;">
+    
+    <!-- Identité -->
+    <h4 class="mb-3"><i class="fa-solid fa-id-card me-2"></i>Informations du compte</h4>
+    
+    <p><strong>Nom d’utilisateur :</strong> {{ user.username }}</p>
+    <p><strong>Email :</strong> {{ user.email }}</p>
+
+    <!-- Rôle utilisateur -->
+    <p>
+        <strong>Rôle :</strong> 
+        {% if user.profil.role == "admin" %}
+            <span class="badge bg-danger">Administrateur</span>
+        {% else %}
+            <span class="badge bg-primary">Client</span>
+        {% endif %}
+    </p>
+
+    <hr>
+
+    <!-- Informations du profil Client (si existe) -->
+    {% if client %}
+    <h4 class="mb-3"><i class="fa-solid fa-user me-2"></i>Profil client</h4>
+
+    <p><strong>Nom complet :</strong> {{ client.prenom_client }} {{ client.nom_client }}</p>
+    <p><strong>Adresse :</strong> {{ client.adresse }}</p>
+    <p><strong>Téléphone :</strong> {{ client.telephone }}</p>
+
+    <p>
+        <strong>Statut client :</strong>
+        {% if client.statut == "Actif" %}
+            <span class="badge bg-success">Actif</span>
+        {% elif client.statut == "Inactif" %}
+            <span class="badge bg-secondary">Inactif</span>
+        {% elif client.statut == "Prospect" %}
+            <span class="badge bg-warning text-dark">Prospect</span>
+        {% else %}
+            <span class="badge bg-info">Fidèle</span>
+        {% endif %}
+    </p>
+    {% endif %}
+
+    <hr>
+
+    <!-- Boutons d'action -->
+    <div class="d-flex flex-column gap-2 mt-3">
+
+        <a href="{% url 'mes_commandes' %}"
+           class="btn btn-primary w-100">
+            <i class="fa-solid fa-box-archive me-2"></i> Mes commandes
+        </a>
+
+{% if user.profil.role == "client" %}
+<a href="{% url 'changer_mot_de_passe' %}" class="btn btn-outline-secondary w-100 mt-3">
+    <i class="fa-solid fa-key me-2"></i>
+    Modifier mon mot de passe
+</a>
+{% endif %}
+
+        <a href="{% url 'logout' %}" class="btn btn-danger w-100">
+            <i class="fa-solid fa-right-from-bracket me-2"></i> Déconnexion
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Mon panier{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center text-primary my-4 fade-in">🛒 Mon Panier</h1>
+
+{% if messages %}
+{% if request.GET.merci %}
+<div class="alert alert-success text-center fw-bold fade-in" id="merci-message">
+    🎉 Merci pour votre commande ! Votre aventure continue avec Nordik Adventures ! ⛰️
+</div>
+{% endif %}
+
+<div class="mb-3 fade-in">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} text-center fw-bold fade-in">
+        {{ message }}
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if lignes %}
+
+<div class="panier-table mb-5 fade-in">
+    <table class="table table-dark table-striped align-middle text-center">
+        <thead class="table-primary">
+            <tr>
+                <th>Image</th>
+                <th>Nom</th>
+                <th>Catégorie</th>
+                <th>Prix</th>
+                <th>Qté</th>
+                <th>Total ligne</th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for l in lignes %}
+            <tr class="fade-in">
+                <td>
+                    <div class="panier-img-wrapper">
+                        <img src="{% static 'images/produits/' %}{{ l.produit.image }}" class="panier-img">
+                    </div>
+                </td>
+
+                <td class="fw-semibold">{{ l.produit.nom_produit }}</td>
+
+                <td class="cat-col">{{ l.produit.categorie.nom }}</td>
+
+                <td>{{ l.produit.prix_unitaire }} $</td>
+
+                <td class="fw-bold">
+                    <div class="d-flex justify-content-center align-items-center gap-2">
+
+                        <a href="{% url 'decrementer_quantite' l.produit.id %}"
+                           class="btn btn-outline-secondary btn-sm fw-bold">−</a>
+
+                        <span>{{ l.quantite }}</span>
+
+                        <a href="{% url 'incrementer_quantite' l.produit.id %}"
+                           class="btn btn-outline-secondary btn-sm fw-bold">+</a>
+
+                    </div>
+                </td>
+
+                <td>{{ l.total }} $</td>
+
+                <td>
+                    <a href="{% url 'retirer_du_panier' l.produit.id %}"
+                       class="btn btn-outline-danger btn-sm">
+                        ❌ Retirer
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<div class="d-flex justify-content-center fade-in">
+    <div class="resume-card fade-in" style="max-width: 450px; width: 100%;">
+
+        <h4 class="mb-3">Résumé de la commande</h4>
+
+        <p class="d-flex justify-content-between">
+            <span>Sous-total :</span>
+            <strong>{{ sous_total }} $</strong>
+        </p>
+
+        <p class="d-flex justify-content-between">
+            <span>TPS (5%) :</span>
+            <span>{{ tps }} $</span>
+        </p>
+
+        <p class="d-flex justify-content-between">
+            <span>TVQ (9,975%) :</span>
+            <span>{{ tvq }} $</span>
+        </p>
+
+        <hr>
+
+        <p class="d-flex justify-content-between fs-5">
+            <strong>Total :</strong>
+            <span class="text-success fw-bold">{{ total }} $</span>
+        </p>
+
+        <a href="{% url 'choisir_paiement' %}" 
+           class="btn btn-nordik w-100 mt-3 py-2 fw-bold">
+           💳 Passer la commande
+        </a>
+
+        <a href="{% url 'vider_panier' %}"
+           class="btn btn-outline-danger w-100 mt-2">
+            Vider le panier
+        </a>
+
+    </div>
+</div>
+
+{% else %}
+    <p class="text-center text-secondary fs-5 fade-in">Votre panier est vide.</p>
+{% endif %}
+
+{% endblock %}

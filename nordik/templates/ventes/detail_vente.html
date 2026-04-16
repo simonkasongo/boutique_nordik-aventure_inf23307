@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Détail vente #{{ vente.id }}{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+
+    <h1 class="mb-4">🧾 Détail de la vente #{{ vente.id }}</h1>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Informations générales</h5>
+            <p><strong>Date :</strong> {{ vente.date_vente }}</p>
+            <p><strong>Client :</strong> {{ vente.client }}</p>
+            <p><strong>Statut de la commande :</strong> {{ vente.statut_commande }}</p>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Lignes de vente</h5>
+
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>Qté</th>
+                        <th>Prix unitaire</th>
+                        <th>Total ligne</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ligne in vente.lignes.all %}
+                    <tr>
+                        <td>{{ ligne.produit.nom_produit }}</td>
+                        <td>{{ ligne.quantite }}</td>
+                        <td>{{ ligne.prix_unitaire }} $</td>
+                        <td>{{ ligne.sous_total }} $</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <p class="mt-3">
+                <strong>Sous-total :</strong> {{ vente.sous_total }} $<br>
+                <strong>TPS :</strong> {{ vente.tps }} $<br>
+                <strong>TVQ :</strong> {{ vente.tvq }} $<br>
+                <strong>Total :</strong> {{ vente.montant_total }} $
+            </p>
+        </div>
+    </div>
+
+    {% if vente.facture %}
+    <a href="{% url 'detail_facture' vente.facture.id %}" class="btn btn-primary">
+        Voir la facture liée
+    </a>
+    {% endif %}
+
+    <a href="/dashboard/" class="btn btn-outline-secondary ms-2">
+        ← Retour au tableau de bord
+    </a>
+
+</div>
+{% endblock %}

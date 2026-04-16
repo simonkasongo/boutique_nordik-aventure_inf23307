@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Paiement par carte</h2>
+
+<form method="POST" action="{% url 'paiement_carte' %}">
+    {% csrf_token %}
+
+    <label>Numéro de carte</label>
+    <input name="numero" class="form-control" maxlength="16" required>
+
+    <label>Date d'expiration</label>
+    <input name="exp" class="form-control" placeholder="MM/AA" required>
+
+    <label>CVV</label>
+    <input name="cvv" class="form-control" maxlength="3" required>
+
+    <button type="submit" class="btn btn-primary w-100 mt-3">
+        Valider et payer
+    </button>
+</form>
+
+{% endblock %}

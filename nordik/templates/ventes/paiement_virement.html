@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Paiement par virement bancaire</h2>
+
+<p>Montant à payer : <strong>{{ total }} $</strong></p>
+
+<p>Veuillez effectuer un virement bancaire aux coordonnées suivantes :</p>
+
+<ul>
+    <li><strong>Entreprise :</strong> Nordik Adventures</li>
+    <li><strong>IBAN :</strong> CA93 0000 1234 5678 9999</li>
+    <li><strong>Référence :</strong> {{ reference }}</li>
+</ul>
+
+<form method="POST" action="{% url 'paiement_virement' %}">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary w-100 mt-3">
+        J'ai effectué le virement
+    </button>
+</form>
+
+{% endblock %}

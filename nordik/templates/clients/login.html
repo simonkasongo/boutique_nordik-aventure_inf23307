@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block title %}Connexion{% endblock %} 
+{% block content %}
+<h2 class="text-center mb-4">Connexion</h2>
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} d-flex align-items-center mt-3" role="alert">
+      {% if message.tags == "error" %}
+        <i class="fa-solid fa-circle-exclamation me-2"></i>
+      {% else %}
+        <i class="fa-solid fa-circle-check me-2"></i>
+      {% endif %}
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+
+
+<form method="POST" class="card p-4 shadow mx-auto" style="max-width: 400px">
+  {% csrf_token %}
+
+  <label>Nom d'utilisateur</label>
+  <input type="text" class="form-control mb-3" name="username" required />
+
+  <label>Mot de passe</label>
+  <input type="password" class="form-control mb-3" name="password" required />
+
+  <button class="btn btn-primary w-100">Se connecter</button>
+</form>
+
+
+
+{% endblock %}

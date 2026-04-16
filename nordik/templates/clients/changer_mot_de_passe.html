@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Changer mon mot de passe{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-4">🔐 Modifier mon mot de passe</h2>
+
+<div class="card p-4 shadow" style="max-width: 500px; margin: auto;">
+
+{% if form.errors %}
+<div class="alert alert-warning d-flex align-items-center border-0 shadow-sm" role="alert" 
+     style="background-color: #fff8e1; color: #8a6d3b;">
+    <i class="fa-solid fa-circle-exclamation me-2"></i>
+    <div>
+        {% for field, errors in form.errors.items %}
+            {% for error in errors %}
+                <p class="mb-0">{{ error }}</p>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label class="form-label">Ancien mot de passe</label>
+            {{ form.old_password }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Nouveau mot de passe</label>
+            {{ form.new_password1 }}
+            <small class="text-muted">
+                Le mot de passe doit contenir au moins 8 caractères.
+            </small>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Confirmez le nouveau mot de passe</label>
+            {{ form.new_password2 }}
+        </div>
+
+        <button class="btn btn-primary w-100 mt-3">
+            🔄 Mettre à jour le mot de passe
+        </button>
+    </form>
+</div>
+
+{% endblock %}

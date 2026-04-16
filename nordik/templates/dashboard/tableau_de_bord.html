@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-header">
+    <div>
+        <h1>Tableau de bord - Nordik Adventures</h1>
+        <p class="text-muted mb-0">Vue d’ensemble du PGI (produits, clients, ventes)</p>
+    </div>
+</div>
+<!-- GRAPHIQUE DES VENTES -->
+<div class="dashboard-chart card shadow-sm p-4 mb-4">
+    <h4 class="mb-3">📊 Évolution des ventes</h4>
+    <canvas id="salesChart"></canvas>
+</div>
+
+<!-- CARTES STATISTIQUES -->
+<div class="dashboard-cards mb-4">
+
+    <div class="card-dashboard card-db-blue">
+        <h3>Clients</h3>
+        <div class="value">{{ total_clients }}</div>
+        <small>Total des clients enregistrés</small>
+    </div>
+
+    <div class="card-dashboard card-db-green">
+        <h3>Produits</h3>
+        <div class="value">{{ total_produits }}</div>
+        <small>Articles actifs dans le catalogue</small>
+    </div>
+
+    <div class="card-dashboard card-db-orange">
+        <h3>Ventes totales</h3>
+        <div class="value">{{ total_ventes }}</div>
+        <small>Commandes enregistrées</small>
+    </div>
+
+    <div class="card-dashboard card-db-purple">
+        <h3>Revenus</h3>
+        <div class="value">{{ revenus_totaux }} $</div>
+        <small>Total cumulé des ventes payées</small>
+    </div>
+
+    <div class="card-dashboard card-db-red">
+        <h3>Ventes en attente</h3>
+        <div class="value">{{ ventes_en_attente }}</div>
+        <small>Factures non payées</small>
+    </div>
+
+</div>
+
+
+
+<!-- PRODUITS EN STOCK FAIBLE -->
+<div class="dashboard-section">
+    <h3><i class="fa-solid fa-boxes-stacked me-2"></i> Produits en stock faible</h3>
+{% if produits_stock_faible %}
+    {% for p in produits_stock_faible %}
+        <div class="activite-item">
+            <strong>{{ p.nom_produit }}</strong> — 
+            <span class="text-danger">Stock : {{ p.quantite_stock }}</span>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="section-line-message">
+        Tous les produits ont un stock suffisant.
+    </div>
+{% endif %}
+
+</div>
+
+
+<!-- DERNIÈRES VENTES -->
+<div class="dashboard-section">
+    <h3><i class="fa-solid fa-receipt me-2"></i> Dernières ventes</h3>
+
+{% for v in ventes_recent %}
+    <div class="vente-item">
+        <a href="{% url 'detail_vente_dashboard' v.id %}">
+            Vente #{{ v.id }} – {{ v.date_vente }}
+        </a>
+        <span class="vente-montant">{{ v.montant_total }} $</span>
+    </div>
+{% empty %}
+    <div class="section-line-message">Aucune vente récente.</div>
+{% endfor %}
+
+</div>
+
+
+<!-- ACTIVITÉS CLIENTS RÉCENTES -->
+<div class="dashboard-section">
+    <h3><i class="fa-solid fa-users-line me-2"></i> Activités clients récentes</h3>
+
+    {% if activites_recent %}
+        <div class="activity-timeline">
+            {% for act in activites_recent %}
+                <div class="activity-item">
+                    <div class="activity-dot"></div>
+
+                    <div class="activity-content">
+                        <div class="activity-title">
+                            <strong>{{ act.client }}</strong>
+                        </div>
+
+                        <div class="activity-desc">
+                            {{ act.description }}
+                        </div>
+
+                        <div class="activity-date">
+         {{ act.date_activite|date:"d/m/Y" }} {{ act.date_activite|time:"H:i" }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% else %}
+        <div class="section-line-message">Aucune activité client récente.</div>
+    {% endif %}
+</div>
+
+
+
+
+<div class="dashboard-section">
+    <h3><i class="fa-solid fa-comments me-2"></i> Avis récents</h3>
+
+    {% for avis in avis_recents %}
+        <div class="avis-item">
+            <span class="avis-etoile">⭐ {{ avis.note }}</span>
+            — <strong>{{ avis.client.nom_client }}</strong>
+            <div class="text-muted small">{{ avis.commentaire }}</div>
+        </div>
+    {% empty %}
+        <div class="section-line-message">Aucun avis récent.</div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const el = document.getElementById("salesChart");
+    if (!el) return;
+
+    new Chart(el, {
+        type: "line",
+        data: {
+            labels: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil"],
+            datasets: [{
+                label: "Ventes mensuelles",
+                data: [5, 9, 7, 12, 10, 15, 18],
+                borderColor: "#0a9396",
+                backgroundColor: "rgba(10,147,150,0.2)",
+                borderWidth: 3,
+                tension: 0.4,
+                fill: true
+            }]
+        }
+    });
+
+});
+</script>
+{% endblock %}
+
+

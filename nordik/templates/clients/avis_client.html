@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Votre avis{% endblock %}
+
+{% block content %}
+<h1 class="my-4">⭐ Donnez votre avis</h1>
+
+<p>
+    Merci pour votre commande <strong>#{{ vente.id }}</strong> (facture #{{ facture.numero }}).<br>
+    Comment évaluez-vous votre expérience avec Nordik Adventures ?
+</p>
+
+<form method="post" class="mt-3">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        <label class="form-label"><strong>Note (1 à 5 étoiles)</strong></label><br>
+        {% for n in "12345" %}
+            <label class="me-2">
+                <input type="radio" name="note" value="{{ forloop.counter }}"> {{ forloop.counter }} ⭐
+            </label>
+        {% endfor %}
+    </div>
+
+    <div class="mb-3">
+        <label for="commentaire" class="form-label"><strong>Commentaire</strong> (optionnel)</label>
+        <textarea name="commentaire" id="commentaire" rows="4"
+                  class="form-control" placeholder="Dites-nous ce que vous avez aimé ou ce qui peut être amélioré..."></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Envoyer mon avis</button>
+</form>
+{% endblock %}
