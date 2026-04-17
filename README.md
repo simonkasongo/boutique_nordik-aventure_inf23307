@@ -31,11 +31,9 @@ python manage.py runserver
 - `requirements.txt` à la racine.
 - `nordik/` : `manage.py`, apps `clients`, `ventes`, `produits`, `dashboard`, `templates`, `static`.
 
-## Export SQL (remise)
+## Export SQL
 
 ```bash
 cd nordik
 sqlite3 db.sqlite3 .dump > export_tp3.sql
 ```
-
-Démos / captures : voir `README.txt`.
