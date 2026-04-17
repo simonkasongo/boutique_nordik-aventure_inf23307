@@ -3,7 +3,7 @@
 {% block title %}Votre avis{% endblock %}
 
 {% block content %}
-<h1 class="my-4">⭐ Donnez votre avis</h1>
+<h1 class="my-4">Donnez votre avis</h1>
 
 <p>
     Merci pour votre commande <strong>#{{ vente.id }}</strong> (facture #{{ facture.numero }}).<br>
@@ -17,7 +17,7 @@
         <label class="form-label"><strong>Note (1 à 5 étoiles)</strong></label><br>
         {% for n in "12345" %}
             <label class="me-2">
-                <input type="radio" name="note" value="{{ forloop.counter }}"> {{ forloop.counter }} ⭐
+                <input type="radio" name="note" value="{{ forloop.counter }}"> {{ forloop.counter }}/5
             </label>
         {% endfor %}
     </div>

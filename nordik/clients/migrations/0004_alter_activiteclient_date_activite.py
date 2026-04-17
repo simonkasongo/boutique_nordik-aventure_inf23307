@@ -1,4 +1,4 @@
-# Generated manually — horodatage CRM (date + heure)
+# Generated manually - passage date activite en DateTimeField
 
 from django.db import migrations, models
 

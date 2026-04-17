@@ -3,9 +3,9 @@
 
 {% block content %}
 
-<h2 class="mb-4"><i class="fa-solid fa-address-book me-2"></i>Clients</h2>
+<h2 class="mb-4">Clients</h2>
 
-<p class="text-muted mb-4">Liste des clients enregistrés — cliquez sur un client pour consulter l’historique CRM.</p>
+<p class="text-muted mb-4">Liste enregistrée. Clic sur une ligne pour la fiche et l'historique.</p>
 
 <div class="table-responsive shadow-sm rounded">
   <table class="table table-striped table-hover mb-0 align-middle">
@@ -26,9 +26,7 @@
         <td>{{ c.telephone }}</td>
         <td>{{ c.statut }}</td>
         <td class="text-end">
-          <a href="{% url 'detail_client' c.id %}" class="btn btn-sm btn-outline-primary">
-            <i class="fa-solid fa-eye me-1"></i> Détails
-          </a>
+          <a href="{% url 'detail_client' c.id %}" class="btn btn-sm btn-outline-primary">Détails</a>
         </td>
       </tr>
       {% empty %}

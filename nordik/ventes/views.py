@@ -376,10 +376,7 @@ def passer_commande(request):
     # 11) Rediriger vers la page d'avis client
     messages.success(request, "Merci pour votre commande ! Donnez-nous votre avis.")
     if premiere_commande:
-        messages.info(
-            request,
-            "Bienvenue chez Nordik Adventures : merci pour votre première commande.",
-        )
+        messages.info(request, "Première commande, merci.")
     return redirect("avis_client", facture_id=facture.id)
 
 

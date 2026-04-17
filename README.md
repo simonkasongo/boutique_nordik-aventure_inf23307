@@ -1,28 +1,41 @@
-# Boutique Nordik Adventures (INF23307)
+# Nordik Adventures (INF23307)
 
-Prototype Django : site transactionnel et mini-PGI (produits, stock, ventes, facturation, tableau de bord, CRM).
+Site Django pour le cours d'analyse des applications en commerce électronique (UQAR, campus Lévis). Prototype : boutique avec panier, TPS/TVQ sur le sous-total, facture HTML + PDF, et un peu de PGI côté admin (stock, alertes, dashboard).
 
-**Cours :** Analyse des applications en commerce électronique (INF23307), UQAR.
+Livrable TP3. Le guide long (étapes, options) est dans `README.txt`.
 
-## Démarrage rapide
+## Contenu
+
+- **Produits / stock** : catégories, fiches, mouvements quand une vente est créée.
+- **Ventes** : panier en session, commande, facture, paiement simulé selon le flux du TP.
+- **Clients** : inscription, connexion (`User` + `ClientProfil` client/admin), avis 1 à 5 après achat.
+- **CRM** : liste clients, fiche avec `ActiviteClient`, tableau de bord basique.
+
+Pour un compte admin il faut en général aller dans `/admin/` et mettre le bon rôle sur le profil (ou créer un superuser).
+
+## Lancer
 
 ```bash
 cd nordik
 python -m venv venv
-venv\Scripts\activate          # Windows
+venv\Scripts\activate
 pip install -r ..\requirements.txt
 python manage.py migrate
 python manage.py runserver
 ```
 
-Ouvrir http://127.0.0.1:8000/ — créer un compte ou utiliser l’admin Django (`/admin/`) pour les données de démo.
+`http://127.0.0.1:8000/`
 
-## Remise (export SQL)
+## Arborescence utile
 
-Depuis le dossier `nordik` :
+- `requirements.txt` à la racine.
+- `nordik/` : `manage.py`, apps `clients`, `ventes`, `produits`, `dashboard`, `templates`, `static`.
+
+## Export SQL (remise)
 
 ```bash
+cd nordik
 sqlite3 db.sqlite3 .dump > export_tp3.sql
 ```
 
-Le détail du projet et des modules est dans [README.txt](README.txt).
+Démos / captures : voir `README.txt`.

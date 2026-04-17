@@ -40,7 +40,7 @@ def detail_client(request, client_id):
         type_activite = (request.POST.get("type_activite") or "Note").strip()[:50]
         description = (request.POST.get("description") or "").strip()[:255]
         if not description:
-            messages.error(request, "Veuillez saisir une description pour l’activité.")
+            messages.error(request, "Description obligatoire.")
         else:
             ActiviteClient.objects.create(
                 client=client,
@@ -49,9 +49,9 @@ def detail_client(request, client_id):
             )
             log_activite(
                 request.user,
-                f"A ajouté une entrée CRM pour le client {client} ({type_activite})",
+                f"CRM: note sur client {client} ({type_activite})",
             )
-            messages.success(request, "Activité enregistrée dans l’historique CRM.")
+            messages.success(request, "Activité enregistrée.")
             return redirect("detail_client", client_id=client.id)
 
     return render(

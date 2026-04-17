@@ -13,7 +13,7 @@
 </div>
 <!-- GRAPHIQUE DES VENTES -->
 <div class="dashboard-chart card shadow-sm p-4 mb-4">
-    <h4 class="mb-3">📊 Évolution des ventes</h4>
+    <h4 class="mb-3">Evolution des ventes</h4>
     <canvas id="salesChart"></canvas>
 </div>
 
@@ -56,11 +56,11 @@
 
 <!-- PRODUITS EN STOCK FAIBLE -->
 <div class="dashboard-section">
-    <h3><i class="fa-solid fa-boxes-stacked me-2"></i> Produits en stock faible</h3>
+    <h3>Produits en stock faible</h3>
 {% if produits_stock_faible %}
     {% for p in produits_stock_faible %}
         <div class="activite-item">
-            <strong>{{ p.nom_produit }}</strong> — 
+            <strong>{{ p.nom_produit }}</strong> -
             <span class="text-danger">Stock : {{ p.quantite_stock }}</span>
         </div>
     {% endfor %}
@@ -80,7 +80,7 @@
 {% for v in ventes_recent %}
     <div class="vente-item">
         <a href="{% url 'detail_vente_dashboard' v.id %}">
-            Vente #{{ v.id }} – {{ v.date_vente }}
+            Vente #{{ v.id }} - {{ v.date_vente }}
         </a>
         <span class="vente-montant">{{ v.montant_total }} $</span>
     </div>
@@ -93,7 +93,7 @@
 
 <!-- ACTIVITÉS CLIENTS RÉCENTES -->
 <div class="dashboard-section">
-    <h3><i class="fa-solid fa-users-line me-2"></i> Activités clients récentes</h3>
+    <h3>Activités clients récentes</h3>
 
     {% if activites_recent %}
         <div class="activity-timeline">
@@ -127,12 +127,12 @@
 
 
 <div class="dashboard-section">
-    <h3><i class="fa-solid fa-comments me-2"></i> Avis récents</h3>
+    <h3>Avis récents</h3>
 
     {% for avis in avis_recents %}
         <div class="avis-item">
-            <span class="avis-etoile">⭐ {{ avis.note }}</span>
-            — <strong>{{ avis.client.nom_client }}</strong>
+            <span class="avis-etoile">Note {{ avis.note }}/5</span>
+            - <strong>{{ avis.client.nom_client }}</strong>
             <div class="text-muted small">{{ avis.commentaire }}</div>
         </div>
     {% empty %}

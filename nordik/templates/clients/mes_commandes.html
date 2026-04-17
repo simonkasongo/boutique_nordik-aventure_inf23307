@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<h2 class="mb-4">📦 Mes commandes</h2>
+<h2 class="mb-4">Mes commandes</h2>
 
 {% if commandes %}
 <ul class="list-group shadow">
@@ -35,7 +35,7 @@
                 <!-- Voir la facture si elle existe -->
                 <a href="{% url 'detail_facture' v.facture.id %}"
                    class="btn btn-primary btn-sm">
-                    📄 Voir facture
+                    Voir facture
                 </a>
             {% else %}
                 <!-- Sinon lien vers détail vente -->

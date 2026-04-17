@@ -13,7 +13,7 @@
              class="facture-logo">
 
         <h2 class="mt-3 fw-bold">
-            🧾 Facture #{{ facture.numero }}
+            Facture #{{ facture.numero }}
         </h2>
     </div>
 
@@ -80,7 +80,7 @@
         <div class="text-center">
             <a href="{% url 'facture_pdf' facture.id %}"
                class="btn btn-outline-primary w-50">
-                📄 Télécharger la facture PDF
+                Télécharger la facture PDF
             </a>
 
             <a href="{% url 'voir_panier' %}?merci=1"

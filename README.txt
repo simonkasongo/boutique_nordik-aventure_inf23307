@@ -1,4 +1,4 @@
-README.txt — Projet Nordik Adventures
+README.txt - Projet Nordik Adventures
 
 ============================================================
 1. PRÉSENTATION GÉNÉRALE DU PROJET

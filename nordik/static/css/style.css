@@ -108,7 +108,7 @@ h5 {
 }
 
 /* ------------------------------------------------------------
-   PRODUITS — LISTE / CATALOGUE
+   PRODUITS - LISTE / CATALOGUE
    ------------------------------------------------------------ */
 .produits-grid {
   display: grid;
@@ -144,7 +144,7 @@ h5 {
 }
 
 /* ------------------------------------------------------------
-   PRODUIT — DÉTAIL
+   PRODUIT - DETAIL
    ------------------------------------------------------------ */
 .img-fluid {
   max-height: 420px;
@@ -242,7 +242,7 @@ h5 {
 }
 
 /* ------------------------------------------------------------
-   DASHBOARD — CARDS STATISTIQUES
+   DASHBOARD - CARDS STATS
    ------------------------------------------------------------ */
 .dashboard-cards {
   display: grid;
@@ -279,7 +279,7 @@ h5 {
 }
 
 /* ------------------------------------------------------------
-   DASHBOARD — LISTES
+   DASHBOARD - LISTES
    ------------------------------------------------------------ */
 .dashboard-section {
   background: #fff;
@@ -304,7 +304,7 @@ h5 {
 }
 
 /* ------------------------------------------------------------
-   CONFETTIS — ANCIEN PRÉSERVÉ
+   CONFETTIS (animation ancienne)
    ------------------------------------------------------------ */
 .confetti {
   position: fixed;
@@ -344,7 +344,7 @@ h5 {
 }
 
 /* ------------------------------------------------------------
-   TIMELINE • ACTIVITÉS CLIENTS
+   TIMELINE ACTIVITES CLIENTS
    ------------------------------------------------------------ */
 .activity-timeline {
   position: relative;
@@ -394,7 +394,7 @@ h5 {
 }
 
 /* ------------------------------------------------------------
-   FOOTER — VERSION MODERNE (NOUVEAUX STYLES AJOUTÉS)
+   FOOTER
    ------------------------------------------------------------ */
 footer.footer-nordik {
   background: linear-gradient(180deg, #1b1f29, #0f1218) !important;

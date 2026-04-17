@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Client — {{ client.prenom_client }} {{ client.nom_client }}{% endblock %}
+{% block title %}Client - {{ client.prenom_client }} {{ client.nom_client }}{% endblock %}
 
 {% block content %}
 
@@ -10,14 +10,12 @@
   </ol>
 </nav>
 
-<h2 class="mb-3"><i class="fa-solid fa-user me-2"></i>{{ client.prenom_client }} {{ client.nom_client }}</h2>
+<h2 class="mb-3">{{ client.prenom_client }} {{ client.nom_client }}</h2>
 
 <div class="row g-4">
   <div class="col-lg-5">
     <div class="card shadow-sm">
-      <div class="card-header bg-primary text-white">
-        <i class="fa-solid fa-id-card me-2"></i>Coordonnées
-      </div>
+      <div class="card-header bg-primary text-white">Coordonnées</div>
       <div class="card-body">
         <p><strong>Adresse :</strong> {{ client.adresse }}</p>
         <p><strong>Courriel :</strong> {{ client.courriel }}</p>
@@ -43,9 +41,7 @@
             <textarea class="form-control" id="description" name="description" rows="3" required
                       placeholder="Résumé de l’échange ou de l’action"></textarea>
           </div>
-          <button type="submit" class="btn btn-primary w-100">
-            <i class="fa-solid fa-floppy-disk me-2"></i>Enregistrer
-          </button>
+          <button type="submit" class="btn btn-primary w-100">Enregistrer</button>
         </form>
       </div>
     </div>
@@ -53,9 +49,7 @@
 
   <div class="col-lg-7">
     <div class="card shadow-sm">
-      <div class="card-header bg-dark text-white">
-        <i class="fa-solid fa-clock-rotate-left me-2"></i>Historique des activités
-      </div>
+      <div class="card-header bg-dark text-white">Historique</div>
       <div class="card-body p-0">
         <ul class="list-group list-group-flush">
           {% for a in activites %}

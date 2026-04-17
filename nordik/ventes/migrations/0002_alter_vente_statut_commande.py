@@ -1,4 +1,4 @@
-# Generated manually — alignement statuts commande (énoncé TP3)
+# Generated manually - statuts commande (TP3)
 
 from django.db import migrations, models
 

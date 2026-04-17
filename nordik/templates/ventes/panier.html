@@ -5,12 +5,12 @@
 
 {% block content %}
 
-<h1 class="text-center text-primary my-4 fade-in">🛒 Mon Panier</h1>
+<h1 class="text-center text-primary my-4 fade-in">Mon panier</h1>
 
 {% if messages %}
 {% if request.GET.merci %}
 <div class="alert alert-success text-center fw-bold fade-in" id="merci-message">
-    🎉 Merci pour votre commande ! Votre aventure continue avec Nordik Adventures ! ⛰️
+    Merci pour la commande.
 </div>
 {% endif %}
 
@@ -73,7 +73,7 @@
                 <td>
                     <a href="{% url 'retirer_du_panier' l.produit.id %}"
                        class="btn btn-outline-danger btn-sm">
-                        ❌ Retirer
+                        Retirer
                     </a>
                 </td>
             </tr>
@@ -112,7 +112,7 @@
 
         <a href="{% url 'choisir_paiement' %}" 
            class="btn btn-nordik w-100 mt-3 py-2 fw-bold">
-           💳 Passer la commande
+           Passer la commande
         </a>
 
         <a href="{% url 'vider_panier' %}"
