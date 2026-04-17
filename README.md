@@ -2,7 +2,7 @@
 
 Site Django pour le cours d'analyse des applications en commerce électronique (UQAR, campus Lévis). Prototype : boutique avec panier, TPS/TVQ sur le sous-total, facture HTML + PDF, et un peu de PGI côté admin (stock, alertes, dashboard).
 
-Livrable TP3. Le guide long (étapes, options) est dans `README.txt`.
+Livrable. Le guide long (étapes, options) est dans `README.txt`.
 
 ## Contenu
 
